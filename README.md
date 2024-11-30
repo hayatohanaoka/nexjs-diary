@@ -25,3 +25,8 @@ pnpm create next-app --example with-playwright with-playwright-app
 ```
 
 Deploy it to the cloud with [Vercel](https://vercel.com/new?utm_source=github&utm_medium=readme&utm_campaign=next-example) ([Documentation](https://nextjs.org/docs/deployment)).
+
+
+
+# developer diary
+2024/12/01 Failed to create local env using k8s. Not create k8s resources.

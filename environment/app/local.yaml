@@ -1,0 +1,10 @@
+apiVersion: skaffold/v4beta11
+kind: Config
+metadata:
+  name: app
+deploy:
+  helm:
+    releases:
+      - name: nextjs-diary
+        chartPath: helm/deployment
+        version: 1.0.0
