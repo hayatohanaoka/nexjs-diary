@@ -1,4 +1,6 @@
 FROM node:23-alpine AS base
+RUN apk add --update curl && \
+  rm -rf /var/cache/apk/*
 
 FROM base AS deps-installer
 WORKDIR /app
