@@ -18,4 +18,4 @@ spec:
         - image: node:23.3.0
           name: {{ .Chart.Name }}
           ports:
-            - containerPort: 3000
+            - containerPort: {{ .Values.port }}
