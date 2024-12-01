@@ -1,1 +1,2 @@
+imagePullPolicy: Always
 port: 3000
