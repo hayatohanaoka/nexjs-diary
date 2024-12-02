@@ -1,2 +1,2 @@
-imagePullPolicy: Always
+imagePullPolicy: IfNotPresent
 port: 3000
