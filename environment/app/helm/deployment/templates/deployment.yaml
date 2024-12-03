@@ -16,6 +16,7 @@ spec:
     spec:
       containers:
         - image: node:23.3.0
+          imagePullPolicy: {{ .Values.imagePullPolicy }}
           name: {{ .Chart.Name }}
           ports:
             - containerPort: {{ .Values.port }}

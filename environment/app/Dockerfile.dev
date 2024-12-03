@@ -1,0 +1,15 @@
+FROM node:23-alpine AS base
+RUN apk add --update curl && \
+  rm -rf /var/cache/apk/*
+
+FROM base AS deps-installer
+WORKDIR /app
+RUN apk add --no-cache libc6-compat
+COPY package*.json ./
+RUN npm i
+
+FROM base AS dev-runner
+WORKDIR /app
+COPY --from=deps-installer /app/ ./
+COPY . .
+CMD ["npm", "run", "dev"]

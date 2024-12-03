@@ -2,7 +2,6 @@ apiVersion: skaffold/v4beta10
 kind: Config
 metadata:
   name: nextjs-diary
-
 build:
   artifacts:
     - image: node
@@ -13,10 +12,22 @@ build:
     gitCommit: {}
   local:
     push: false
-deploy:
+    useBuildkit: true
+manifests:
   helm:
     releases:
       - name: nextjs-diary
         chartPath: helm/deployment
         valuesFiles:
           - helm/values.yaml
+deploy:
+  helm: {}
+profiles:
+  - name: dev
+    patches:
+      - op: replace
+        path: /build/artifacts/0/docker/dockerfile
+        value: ./app/Dockerfile.dev
+      - op: replace
+        path: /manifests/helm/releases/0/valuesFiles/0
+        value: helm/dev-values.yaml
