@@ -20,14 +20,3 @@ spec:
           name: {{ .Chart.Name }}
           ports:
             - containerPort: {{ .Values.port }}
-          {{- if .Values.mountPath }}
-          volumeMounts:
-            - name: "{{ .Chart.Name }}-src"
-              mountPath: /app/src/
-          {{- end }}
-      {{- if .Values.mountPath }}
-      volumes:
-        - name: "{{ .Chart.Name }}-src"
-          hostPath:
-            path: {{ .Values.mountPath }}
-      {{- end }}

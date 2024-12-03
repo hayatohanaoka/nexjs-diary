@@ -1,3 +1,2 @@
 imagePullPolicy: IfNotPresent
 port: 3000
-mountPath: /src/*
