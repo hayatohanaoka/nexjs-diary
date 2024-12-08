@@ -11,9 +11,6 @@ jobs:
           node-version: '23.0'
           cache: npm
           cache-dependency-path: ./package-lock.json
-  dependenciesInstall:
-    runs-on: ubuntu-latest
-    steps:
       - run: cd ..
       - run: npm install
       - run: npm run test:e2e
