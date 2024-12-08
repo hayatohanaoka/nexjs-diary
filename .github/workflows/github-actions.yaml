@@ -1,12 +1,12 @@
 name: nextjs app build workflow
 run-name: Run test when ${{ github.actor }} is push ${{ github.ref_name}}
 on:
-  pull_request_review:
+  pull_request:
     types:
-      - submitted
+      - opened
+      - reopened
 jobs:
   Run-e2e-tests:
-    if: github.event.review.state == 'approved'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
