@@ -1,6 +1,9 @@
 name: nextjs app build workflow
-run-name: Run test when ${{ github.actor }} is push ${{ github.ref_name}}.
-on: push
+run-name: Run test when ${{ github.actor }} is push ${{ github.ref_name}}
+on:
+  push:
+    branches:
+      - main
 jobs:
   Run-e2e-tests:
     runs-on: ubuntu-latest
