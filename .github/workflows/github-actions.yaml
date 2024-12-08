@@ -1,5 +1,5 @@
 name: nextjs app build workflow
-run-name: ${{ github.actor }} is testing nextjs-diary
+run-name: Run test when ${{ github.actor }} is push ${{ github.ref_name}}.
 on: push
 jobs:
   Run-e2e-tests:
@@ -18,3 +18,5 @@ jobs:
         run: npx playwright install --with-deps
       - name: run e2e
         run: npm run test:e2e
+      - name: build app
+        run: npm run build
