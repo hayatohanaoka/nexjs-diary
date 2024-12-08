@@ -1,16 +1,19 @@
 name: GitHub Actions Demo
 on: [push]
 jobs:
-  installNodeEnv:
+  RunE2ETests:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Use Node.js 23
+      - name: setup Node.js 23
         uses: actions/setup-node@v4
         with:
           node-version: '23.0'
           cache: npm
           cache-dependency-path: ./package-lock.json
-      - run: cd ..
-      - run: npm install
-      - run: npm run test:e2e
+      - name: Install dependencies
+        run: npm install
+      - name: Install Playwright Browsers
+        run: npx playwright install --with-deps
+      - name: run e2e
+        run: npm run test:e2e
