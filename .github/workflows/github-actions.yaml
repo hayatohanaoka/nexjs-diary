@@ -1,12 +1,16 @@
 name: GitHub Actions Demo
 on: [push]
 jobs:
-  build:
+  installNodeEnv:
     runs-on: ubuntu-latest
     steps:
       - name: Use Node.js 23
         uses: actions/setup-node@v4
         with:
           node-version: '23.0'
-      - run: npm ci
+  dependenciesInstall:
+    runs-on: ubuntu-latest
+    steps:
+      - run: ls
+      - run: npm install
       - run: npm run test:e2e
