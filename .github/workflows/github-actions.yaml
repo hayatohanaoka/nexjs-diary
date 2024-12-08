@@ -1,0 +1,25 @@
+name: nextjs app build workflow
+run-name: Run test when ${{ github.actor }} is push ${{ github.ref_name}}
+on:
+  push:
+    branches:
+      - main
+jobs:
+  Run-e2e-tests:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: setup Node.js 23
+        uses: actions/setup-node@v4
+        with:
+          node-version: '23.0'
+          cache: npm
+          cache-dependency-path: ./package-lock.json
+      - name: Install dependencies
+        run: npm install
+      - name: build app
+        run: npm run build
+      - name: Install Playwright Browsers
+        run: npx playwright install --with-deps
+      - name: run e2e
+        run: npm run test:e2e
