@@ -1,7 +1,7 @@
-'use client'
+"use client"
 
 export function Header() {
   return (
-    <h1>sample diary</h1>
+    <h1>日記帳アプリ</h1>
   )
 }
