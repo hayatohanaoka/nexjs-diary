@@ -1,6 +1,5 @@
 "use client"
 
-import Form from 'next/Form';
 import { Header } from "../components/header";
 import Link from 'next/link';
 

@@ -9,7 +9,7 @@ export default function topPage() {
       <p>日記を作成する</p>
       <Form action="/diary">
         <textarea name="diary" data-test-id="diary-main" />
-        <button type="submit">作成する</button>
+        <button type="submit">作成!!</button>
       </Form>
     </div>
   )
