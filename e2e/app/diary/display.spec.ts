@@ -1,11 +1,9 @@
 import { test, expect } from "@playwright/test";
+import assert from "node:assert";
+import { assertHeader } from "../../common/common";
 
-test("ユーザーはアプリケーションのタイトルとして「日記帳アプリ」と表示されているのを見ることができる", async ({ page }) => {
-  await page.goto("/diary");
-  const expectedText = "日記帳アプリ";
-  
-  const target = await page.locator("div h1")
-  await expect(target).toHaveText(expectedText);
+test("ユーザーはアプリケーションのタイトルとして「日記帳アプリ」と表示されているのを見ることができる",async ({ page }) => {
+  await assertHeader("/diary", "日記帳アプリ", page);
 })
 
 test("ユーザーはタイトル下部のリンクから適切なページに遷移することができる", async ({ page }) => {
