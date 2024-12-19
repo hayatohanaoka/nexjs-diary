@@ -19,6 +19,6 @@ test("ユーザーは日記を入力するテキストボックスにテキス�
   const expectedText = "Test diary";
   const target = await page.locator("form textarea[data-test-id='diary-main']");
   await target.fill(expectedText);
-
+  
   await expect(target).toHaveValue(expectedText);
 })
