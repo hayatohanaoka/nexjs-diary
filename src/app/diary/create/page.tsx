@@ -11,7 +11,14 @@ export default async function createPage() {
       <Header />
       <p>日記を作成する</p>
       <Form action={createFormSubmit}>
-        <textarea name="diary" data-test-id="diary-main" />
+        <div data-test-id="diary-title">
+          <label>タイトル</label>
+          <input name="diary" />
+        </div>
+        <div data-test-id="diary-main">
+          <label>本文</label>
+          <textarea name="diary" />
+        </div>
         <button type="submit">作成!!</button>
       </Form>
     </div>
