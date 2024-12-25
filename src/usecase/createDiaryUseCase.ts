@@ -1,4 +1,4 @@
-import { CreateDiaryPort } from "../port/create_diary";
+import { CreateDiaryPort } from "../port/createDiaryPort";
 
 export class CreateDiaryUseCase {
 	private createDiaryPort: CreateDiaryPort;

@@ -1,19 +1,19 @@
 import '@testing-library/jest-dom';
 import {beforeEach, expect, jest, test, describe} from '@jest/globals';
-import { CreateDiaryUseCase } from '../../../src/usecase/create_diary';
-import { Diary } from '../../../src/domain/diary';
-import { CreateDiaryPort } from '../../../src/port/create_diary';
-import { createDiaryPortMock } from '../__mock__/usecase/createDiaryPortMock';
+import { CreateDiaryUseCase } from '../../src/usecase/createDiaryUseCase';
+import { Diary } from '../../src/domain/diary';
+import { CreateDiaryPort } from '../../src/port/createDiaryPort';
+import { CreateDiaryPortMock } from './__mocks__/port/createDiaryPortMock';
 
-jest.mock('../../../src/gateway/create_diary');
+jest.mock('../../src/port/createDiaryPort');
 
 describe("日記の新規作成", () => {
   // DI
-  const createDiaryPort = new createDiaryPortMock() as CreateDiaryPort;
+  const createDiaryPort = new CreateDiaryPortMock() as CreateDiaryPort;
   const createDiaryUseCase = new CreateDiaryUseCase(createDiaryPort);
 
   beforeEach(() => {
-    createDiaryPortMock.mockClear();
+    CreateDiaryPortMock.mockClear();
   });
   
   
