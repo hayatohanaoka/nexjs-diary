@@ -40,3 +40,25 @@ test("ユーザーは日記の本文を入力欄に入力することができ�
   await expect(targetTextArea).toBeVisible();
   await expect(targetTextArea).toHaveValue(expectedText);
 })
+
+test("ユーザーは日記の日付を入力することができる", async ({ page }) => {
+  await page.goto("/diary/create");
+
+  const expectedTitleText = "日付";
+  const expectedYear = "2022";
+  const expectedMonth = "01";
+  const expectedDay = "01";
+  
+  const targetYearPulldown = await page.locator("form select[data-test-id='diary-year'] select");
+  await targetYearPulldown.selectOption({ label: expectedYear });
+  
+  const targetMonthPulldown = await page.locator("form input[data-test-id='diary-month'] select");
+  await targetMonthPulldown.selectOption({ label: expectedMonth });
+  
+  const targetDayPulldown = await page.locator("form input[data-test-id='diary-day'] select");
+  await targetDayPulldown.selectOption({ label: expectedDay });
+  
+  await expect(targetYearPulldown.inputValue()).toEqual(expectedYear);
+  await expect(targetMonthPulldown.inputValue()).toEqual(expectedMonth);
+  await expect(targetDayPulldown.inputValue()).toEqual(expectedDay);
+})
