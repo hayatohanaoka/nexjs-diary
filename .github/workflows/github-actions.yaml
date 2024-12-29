@@ -1,14 +1,6 @@
 name: nextjs app build workflow
 run-name: Run test when ${{ github.actor }} is push ${{ github.ref_name}}
 on:
-  push:
-    branches:
-      - main
-    paths:
-      - 'src/**'
-      - 'public/**'
-      - e2e/**
-      - __tests__/**
   pull_request:
     types:
       - opened
