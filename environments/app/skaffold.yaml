@@ -20,11 +20,8 @@ manifests:
         chartPath: helm/deployment
         valuesFiles:
           - helm/values.yaml
-<<<<<<< Updated upstream
 deploy:
   helm: {}
-=======
->>>>>>> Stashed changes
 profiles:
   - name: dev
     patches:
@@ -32,9 +29,5 @@ profiles:
         path: /build/artifacts/0/docker/dockerfile
         value: ./app/Dockerfile.dev
       - op: replace
-<<<<<<< Updated upstream
         path: /manifests/helm/releases/0/valuesFiles/0
-=======
-        path: /deploy/helm/releases/0/valuesFiles/0
->>>>>>> Stashed changes
         value: helm/dev-values.yaml
