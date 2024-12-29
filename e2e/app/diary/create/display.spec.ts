@@ -62,3 +62,4 @@ test("ユーザーは日記の日付2022年3月5日を入力することがで�
   await expect(targetMonthPulldown).toHaveValue(expectedMonth);
   await expect(targetDayPulldown).toHaveValue(expectedDay);
 })
+
