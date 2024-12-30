@@ -7,7 +7,7 @@ export class CreateDiaryGateway implements CreateDiaryPort {
 		this.driver = driver;
 	}
 	
-	async create(diary) {
+	async create(diary): Promise<CustomResponse> {
 		return await this.driver.insert(diary);
 	}
 }

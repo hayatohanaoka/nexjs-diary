@@ -1,4 +1,4 @@
-interface Response {
+interface CustomResponse {
     status: number;
     message: string;
 }
