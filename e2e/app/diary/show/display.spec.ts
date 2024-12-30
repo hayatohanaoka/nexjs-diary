@@ -12,7 +12,7 @@ test.describe("日記の閲覧画面の表示テスト", () => {
   test("ユーザーは日記の項目ヘッダーが表示されているのを見ることができる", async ({ page }) => {
     const expectedHeaderItems = ["日付", "タイトル", "本文"]
     
-    const targetTableHeader = await page.locator("th[data-test-id='diary-header'] tr").allInnerTexts();
+    const targetTableHeader = await page.locator("thead[data-test-id='diary-header'] tr th").allInnerTexts();
     expect(targetTableHeader).toEqual(expectedHeaderItems);
   })
 })
