@@ -16,7 +16,7 @@ test.describe("日記の閲覧画面の表示テスト", () => {
     expect(targetTableHeader).toEqual(expectedHeaderItems);
   })
 
-  test("ユーザーは日記の一覧を見ることができる", async ({ page }) => {
+  test("ユーザーは日記の一覧の1番目が「2020-01-01, 固定タイトル, 固定本文」であるのを見ることができる", async ({ page }) => {
     const expectedDairyDataList = [
       "2020-01-01", "固定タイトル", "固定本文"
     ];

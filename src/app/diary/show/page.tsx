@@ -13,7 +13,13 @@ export default function topPage() {
             <th>本文</th>
           </tr>
         </thead>
-        <tbody></tbody>
+        <tbody>
+          <tr>
+            <th>2020-01-01</th>
+            <th>固定タイトル</th>
+            <th>固定本文</th>
+          </tr>
+        </tbody>
       </table>
     </div>
   )
