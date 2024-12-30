@@ -44,7 +44,6 @@ test.describe("日記の作成画面の表示テスト", () => {
   })
   
   test("ユーザーは日記の日付2022年3月5日を入力することができる", async ({ page }) => {
-    const expectedTitleText = "日付";
     const expectedYear = "2022";
     const expectedMonth = "3";
     const expectedDay = "5";
