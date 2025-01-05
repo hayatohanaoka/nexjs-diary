@@ -1,7 +1,7 @@
 import { SupabaseDriver } from "./driver/supabaseDriver";
-import { CreateDiaryGateway } from "./gateway/createDiaryGateway";
-import { CreateDiaryUseCase } from "./usecase/createDiaryUseCase";
+import { DiaryGateway } from "./gateway/diaryGateway";
+import { DiaryUseCase } from "./usecase/diaryUseCase";
 
-export const supabaseDriver     = new SupabaseDriver();
-export const createDiaryGateway = new CreateDiaryGateway(supabaseDriver);
-export const createDiaryUseCase = new CreateDiaryUseCase(createDiaryGateway);
+export const supabaseDriver = new SupabaseDriver();
+export const diaryGateway   = new DiaryGateway(supabaseDriver);
+export const diaryUseCase   = new DiaryUseCase(diaryGateway);

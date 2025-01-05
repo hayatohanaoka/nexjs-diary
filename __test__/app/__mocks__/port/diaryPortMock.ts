@@ -1,9 +1,12 @@
 import { jest } from '@jest/globals';
+import { FormDiary } from "../../../../src/domain/diary";
 
-
-export const showDiaryPortMock = jest.fn().mockImplementation(() => {
-  return {
-    all: () => {
+export const diaryPortMock = jest.fn().mockImplementation(() => {
+	return {
+		create: (diary: FormDiary) => {
+			return {status: 201, message: `diary is created.`};
+		},
+    getAll: () => {
       return {
         data: [
           {
