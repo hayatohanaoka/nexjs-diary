@@ -1,26 +1,15 @@
-import { Header } from "../../components/header";
-import { Diary } from '../../../domain/diary';
-
-import { createClient } from '@supabase/supabase-js'
-import { SupabaseEnv } from "../../../../env";
 import React from "react";
+import { Header } from "../../components/header";
 import { DiariesTable } from "../../components/diariesTable";
-
-async function fetchDiaries() {
-  const supabase = createClient(SupabaseEnv.SUPABASE_ENDPOINT, SupabaseEnv.SUPABASE_TOKEN);
-  const {error, data} = await supabase.from("diary").select("*");
-  if (error) {
-    return "Server error";
-  }
-  return data;
-};
-
+import { diaryUseCase } from "../../../dependencies";
+import { diariesMock } from "../../../../e2e/mocks/diaryMock";
 
 export default async function topPage() {
+  const allDiaries = process.env.E2E_MOCK ? diariesMock : await diaryUseCase.showAll();
   return (
     <div>
       <Header />
-      <DiariesTable diaries={await fetchDiaries() as Diary[]} />
+      <DiariesTable diaries={allDiaries.data} />
     </div>
   )
 }
