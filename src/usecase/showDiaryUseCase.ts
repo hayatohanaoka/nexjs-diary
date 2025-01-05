@@ -9,6 +9,6 @@ export class ShowDiaryUseCase {
     }
 
     all() {
-        todo();
+        return this.showDiaryPort.all();
     }
 }
