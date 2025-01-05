@@ -1,5 +1,6 @@
 import { Diary } from "../domain/diary";
 import { CreateDiaryPort } from "../port/createDiaryPort";
+import { CustomResponse } from "../types";
 
 export class CreateDiaryUseCase {
 	private createDiaryPort: CreateDiaryPort;
@@ -16,6 +17,6 @@ export class CreateDiaryUseCase {
 	}
 
 	validate(diary: Diary): boolean {
-		return (diary.title === "" || diary.body === "" || diary.writeDateString === "") ? true : false
+		return (diary.id === undefined || diary.title === "" || diary.body === "" || diary.write_date === "") ? true : false
 	}
 }

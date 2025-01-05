@@ -1,6 +1,7 @@
 import { SupabaseEnv } from "../../env";
 import { Diary } from "../domain/diary";
 import { createClient } from '@supabase/supabase-js'
+import { CustomResponse } from "../types";
 
 export class SupabaseDriver {
 	async insert(diary: Diary): Promise<CustomResponse> {
@@ -8,7 +9,7 @@ export class SupabaseDriver {
 		const { data, error } = await supabase
 			.from('diary')
 			.insert([
-				{ title: diary.title, body: diary.body, write_date: diary.writeDateString },
+				{ title: diary.title, body: diary.body, write_date: diary.write_date },
 			])
 			.select()
 

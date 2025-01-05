@@ -1,26 +1,26 @@
 import { Header } from "../../components/header";
+import { Diary } from '../../../domain/diary';
+
+import { createClient } from '@supabase/supabase-js'
+import { SupabaseEnv } from "../../../../env";
+import React from "react";
+import { DiariesTable } from "../../components/diariesTable";
+
+async function fetchDiaries() {
+  const supabase = createClient(SupabaseEnv.SUPABASE_ENDPOINT, SupabaseEnv.SUPABASE_TOKEN);
+  const {error, data} = await supabase.from("diary").select("*");
+  if (error) {
+    return "Server error";
+  }
+  return data;
+};
 
 
-export default function topPage() {
+export default async function topPage() {
   return (
     <div>
       <Header />
-      <table>
-        <thead>
-          <tr>
-            <th>日付</th>
-            <th>タイトル</th>
-            <th>本文</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <th>2020-01-01</th>
-            <th>固定タイトル</th>
-            <th>固定本文</th>
-          </tr>
-        </tbody>
-      </table>
+      <DiariesTable diaries={await fetchDiaries() as Diary[]} />
     </div>
   )
 }

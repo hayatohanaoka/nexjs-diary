@@ -1,5 +1,6 @@
 export interface Diary {
+  id: number;
   title: string;
   body: string;
-  writeDateString: string;
+  write_date: string;
 }
