@@ -7,6 +7,5 @@ interface CustomResponse {
 
 interface DiariesResponse {
     status: number;
-    statusText: string;
     data: Diary[];
 }

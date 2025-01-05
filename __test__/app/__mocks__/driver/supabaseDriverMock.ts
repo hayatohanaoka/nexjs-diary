@@ -22,8 +22,7 @@ export const supabaseDriverMock = jest.fn().mockImplementation(() => {
             "write_date": "2021-08-02"
           }
         ],
-        status: 200,
-        statusText: "OK"
+        status: 200
       }
     }
   }

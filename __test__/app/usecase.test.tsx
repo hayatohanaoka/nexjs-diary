@@ -1,4 +1,3 @@
-import '@testing-library/jest-dom';
 import {beforeEach, expect, jest, test, describe} from '@jest/globals';
 import { DiaryUseCase } from '../../src/usecase/diaryUseCase';
 import { DiaryPort } from '../../src/port/diaryPort';
@@ -59,8 +58,7 @@ describe("アプリケーションでdiaryを使用する", () => {
           "write_date": "2021-08-02"
         }
       ],
-      status: 200,
-      statusText: "OK"
+      status: 200
     }
     const actual = await diaryUseCase.showAll();
     expect(expectedDiariesData).toEqual(actual);

@@ -3,13 +3,12 @@ import { SupabaseDriver } from '../../src/driver/supabaseDriver';
 import { beforeEach, describe } from 'node:test';
 import { supabaseDriverMock } from './__mocks__/driver/supabaseDriverMock';
 import { DiaryGateway } from '../../src/gateway/diaryGateway';
-import { diaryGateway } from '../../src/dependencies';
 
 jest.mock('../../src/driver/supabaseDriver');
 
 describe("supabaseにdairyを登録する", () => {
 	const supabaseDriver = new supabaseDriverMock() as SupabaseDriver;
-	const createDiaryGateway = new DiaryGateway(supabaseDriver);
+	const diaryGateway = new DiaryGateway(supabaseDriver);
 
 	beforeEach(() => {
 		supabaseDriverMock.mockClear();
@@ -19,7 +18,7 @@ describe("supabaseにdairyを登録する", () => {
 		const expected = { status: 201, message: `diary is created.`};
 		const diary = {title: "test title", body: "test body", write_date: "2021-01-01"};
 	
-		const actual = await createDiaryGateway.create(diary);
+		const actual = await diaryGateway.create(diary);
 	
 		expect(expected).toEqual(actual);
 	})
@@ -40,8 +39,7 @@ describe("supabaseにdairyを登録する", () => {
 					"write_date": "2021-08-02"
 				}
 			],
-			status: 200,
-			statusText: "OK"
+			status: 200
 		}
 		const actual = await diaryGateway.getAll();
 		expect(expectedDiariesData).toEqual(actual);
