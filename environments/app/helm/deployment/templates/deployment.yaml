@@ -20,6 +20,9 @@ spec:
           name: {{ .Chart.Name }}
           ports:
             - containerPort: {{ .Values.port }}
+          env:
+            - name: NODE_ENV
+              value: {{ .Values.nodeEnv }}
       {{- if .Values.mountPath }}
           volumeMounts:
             - name: "{{ .Chart.Name }}-src"
