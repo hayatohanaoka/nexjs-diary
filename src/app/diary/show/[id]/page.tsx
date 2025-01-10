@@ -34,6 +34,7 @@ export default async function detailPage(props)  {
 					<h3 data-test-id="diary-body">{diary.body}</h3>
 				</div>
 			</div>
+			<Link href="/diary/edit/1" data-test-id="edit-link">日記を編集する</Link>
 			<Link href="/diary/show" data-test-id="list-link">日記一覧へ戻る</Link>
 		</div>
 	)
