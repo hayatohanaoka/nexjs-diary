@@ -1,3 +1,4 @@
+import { todo } from "node:test";
 import { FormDiary } from "../domain/diary";
 import { DiaryPort } from "../port/diaryPort";
 import { CustomResponse, DiariesResponse } from "../types";
@@ -18,6 +19,10 @@ export class DiaryUseCase {
 
 	async showAll(): Promise<DiariesResponse> {
 		return this.diaryPort.getAll();
+	}
+
+	async show(diaryId: number): Promise<DiariesResponse> {
+		return await this.diaryPort.get(diaryId);
 	}
 
 	validateFormDiary(diary: FormDiary): boolean {

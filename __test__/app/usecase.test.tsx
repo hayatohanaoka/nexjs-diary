@@ -79,4 +79,13 @@ describe("アプリケーションでdiaryを使用する", () => {
     const actual = await diaryUseCase.show(1);
     expect(expectedDiaryData).toEqual(actual);
   })
+
+  test("diaryId=2のdiaryの閲覧をすると、存在しないため空配列となる", async () => {
+    const expectedDiaryData = {
+      data: [],
+      status: 200
+    }
+    const actual = await diaryUseCase.show(2);
+    expect(expectedDiaryData).toEqual(actual);
+  })
 })

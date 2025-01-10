@@ -16,4 +16,8 @@ export class DiaryGateway implements DiaryPort {
 	async getAll(): Promise<DiariesResponse> {
 		return await this.driver.getAll();
 	}
+
+	async get(diaryId: number) {
+		todo();
+	}
 }
