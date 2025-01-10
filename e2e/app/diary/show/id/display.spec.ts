@@ -39,6 +39,18 @@ test.describe("日記の 詳細画面の表示テスト", () => {
 			expect(targetLinkUrl).toEqual(expectedLinkUrl);
 			expect(targetLinkText).toEqual(expectedLinkText);
 		})
+
+		test("ユーザーは日記の詳細から編集ページに遷移できる", async ({ page }) => {
+			const expectedLink = "/diary/edit/1";
+			const expectedLinkText = "日記を編集する";
+
+			const targetLink = await page.locator("a[data-test-id='edit-link']");
+			const targetLinkUrl = await targetLink.getAttribute("href");
+			const targetLinkText = await targetLink.innerText();
+
+			expect(targetLinkUrl).toEqual(expectedLink);
+			expect(targetLinkText).toEqual(expectedLinkText);
+		})
 	}),
 
 	test.describe("異常系" , () => {
