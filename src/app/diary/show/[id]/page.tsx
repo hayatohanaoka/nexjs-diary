@@ -3,6 +3,9 @@ import { Header } from "../../../components/header";
 import { diaryUseCase } from "../../../../dependencies";
 import { server } from "../../../../../e2e/mocks/show/node";
 import Link from "next/link";
+import { DiaryTitle } from "../../../components/formItems/diaryTitle";
+import { DiaryBody } from "../../../components/formItems/diaryBody";
+import { DateOption } from "../../../components/formItems/diaryDate";
 
 if (process.env.USE_E2E_MOCKS) {
 	server.listen();
@@ -22,19 +25,17 @@ export default async function detailPage(props)  {
 	}
 
 	const diary = diaries[0];
+	const writtenDate = new Date(diary.write_date);
 	return (
 		<div>
 			<Header />
 			<div>
-				<h3 data-test-id="diary-id">Diary ID: {diary.id}</h3>
-				<h3 data-test-id="diary-title">Title: {diary.title}</h3>
-				<h3 data-test-id="diary-date">Write date: {diary.write_date}</h3>
-				<div>
-					<h3>Body: </h3>
-					<h3 data-test-id="diary-body">{diary.body}</h3>
-				</div>
+				<p data-test-id="written-date">{`${writtenDate.getFullYear()}年${writtenDate.getMonth()+1}月${writtenDate.getDate()}日`}</p>
+				<DiaryTitle displayLabelText="タイトル" required={true} defaultInput={diary.title} readOnly/>
+				<DiaryBody displayLabelText="本文" required={true} defaultInput={diary.body} readOnly/>
+				<button type="submit">送信</button>
 			</div>
-			<Link href="/diary/edit/1" data-test-id="edit-link">日記を編集する</Link>
+			<Link href={`/diary/edit/${urlParams.id}`} data-test-id="edit-link">日記を編集する</Link>
 			<Link href="/diary/show" data-test-id="list-link">日記一覧へ戻る</Link>
 		</div>
 	)

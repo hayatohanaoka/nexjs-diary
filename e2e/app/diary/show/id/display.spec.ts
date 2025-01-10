@@ -12,20 +12,17 @@ test.describe("日記の 詳細画面の表示テスト", () => {
 		})
 	
 		test("ユーザーは「id=1」の日記の内容を閲覧することができる", async ({ page }) => {
-			const expectedId = "Diary ID: 1";
-			const expectedTitle = "Title: 固定タイトル";
+			const expectedDate = "2020年1月1日";
+			const expectedTitle = "固定タイトル";
 			const expectedBody = "固定本文";
-			const expectedDate = "Write date: 2020-01-01";
 	
-			const targetId = await page.locator("h3[data-test-id='diary-id']");
-			const targetTitle = await page.locator("h3[data-test-id='diary-title']");
-			const targetBody = await page.locator("h3[data-test-id='diary-body']");
-			const targetDate = await page.locator("h3[data-test-id='diary-date']");
+			const targetDate = await page.locator("[data-test-id='written-date']");
+			const targetTitle = await page.locator("[data-test-id='diary-title'] input");
+			const targetBody = await page.locator("[data-test-id='diary-main'] textarea");
 	
-			await expect(targetId).toHaveText(expectedId);
+			await expect(targetDate).toHaveText(expectedDate);
 			await expect(targetTitle).toHaveText(expectedTitle);
 			await expect(targetBody).toHaveText(expectedBody);
-			await expect(targetDate).toHaveText(expectedDate);
 		})
 
 		test("ユーザーは日記の一覧へ戻ることができる", async ({ page }) => {
