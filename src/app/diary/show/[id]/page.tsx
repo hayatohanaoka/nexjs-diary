@@ -5,7 +5,6 @@ import { server } from "../../../../../e2e/mocks/show/node";
 import Link from "next/link";
 import { DiaryTitle } from "../../../components/formItems/diaryTitle";
 import { DiaryBody } from "../../../components/formItems/diaryBody";
-import { DateOption } from "../../../components/formItems/diaryDate";
 
 if (process.env.USE_E2E_MOCKS) {
 	server.listen();
