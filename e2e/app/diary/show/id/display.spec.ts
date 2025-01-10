@@ -21,8 +21,8 @@ test.describe("日記の 詳細画面の表示テスト", () => {
 			const targetBody = await page.locator("[data-test-id='diary-main'] textarea");
 	
 			await expect(targetDate).toHaveText(expectedDate);
-			await expect(targetTitle).toHaveText(expectedTitle);
-			await expect(targetBody).toHaveText(expectedBody);
+			await expect(targetTitle).toHaveValue(expectedTitle);
+			await expect(targetBody).toHaveValue(expectedBody);
 		})
 
 		test("ユーザーは日記の一覧へ戻ることができる", async ({ page }) => {
@@ -31,8 +31,8 @@ test.describe("日記の 詳細画面の表示テスト", () => {
 
 			const targetLink = await page.locator("a[data-test-id='list-link']")
 			
-			await expect(targetLink).toHaveAttribute("href", expectedLinkUrl);
 			await expect(targetLink).toHaveText(expectedLinkText);
+			await expect(targetLink).toHaveAttribute("href", expectedLinkUrl);
 		})
 		
 		test("ユーザーは日記の詳細から編集ページに遷移できる", async ({ page }) => {
