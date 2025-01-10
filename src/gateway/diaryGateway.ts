@@ -18,6 +18,6 @@ export class DiaryGateway implements DiaryPort {
 	}
 
 	async get(diaryId: number) {
-		todo();
+		return await this.driver.get(diaryId);
 	}
 }
