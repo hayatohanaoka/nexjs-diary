@@ -1,31 +1,27 @@
 import React from "react";
-import { InferGetServerSidePropsType, GetServerSideProps } from "next";
 import { Header } from "../../../components/header";
-import { Diary } from "../../../../domain/diary";
-import { DiaryUseCase } from "../../../../usecase/diaryUseCase";
+import { diaryUseCase } from "../../../../dependencies";
+import { server } from "../../../../../e2e/mocks/show/node";
+import Link from "next/link";
 
-interface props {
-	diary: Diary;
+if (process.env.USE_E2E_MOCKS) {
+	server.listen();
 }
 
-export const getServerSideProps = (async () => {
-	const res = await DiaryUseCase.show(1);
-	const diary = res.data[0];
-	return {
-		props: diary
-	}
-})
-
-export default async function detailPage(props: props)  {
-	const diary = props.diary[0];
-	if (props.diary === undefined) {
+export default async function detailPage(props)  {
+	const urlParams = await props.params;
+	const diariesResponse = await diaryUseCase.show(urlParams.id);
+	const diaries = diariesResponse.data;
+	if (diaries.length === 0) {
 		return (
-			<div>
+			<div data-test-id="error-message">
 				<p>指定されたIDの日記が存在しません</p>
+				<Link href="/diary/show">日記一覧へ戻る</Link>
 			</div>
 		)
 	}
 
+	const diary = diaries[0];
 	return (
 		<div>
 			<Header />

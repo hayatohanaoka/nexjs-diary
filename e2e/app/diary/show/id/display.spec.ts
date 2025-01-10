@@ -36,7 +36,7 @@ test.describe("日記の 詳細画面の表示テスト", () => {
 
 		test("ユーザーは「id=3」の日記が存在しないため、エラーページへ遷移する", async ({ page }) => {
 			const expectedText = "指定されたIDの日記が存在しません";
-			const expectedLinkUrl = "/diary/show/";
+			const expectedLinkUrl = "/diary/show";
 			const expectedLinkText = "日記一覧へ戻る";
 	
 			const targetMessage = await page.locator("div[data-test-id='error-message']");

@@ -12,19 +12,16 @@ export class SupabaseDriver {
 				{ title: diary.title, body: diary.body, write_date: diary.write_date },
 			])
 			.select()
-		
-		if (response.error) {
-			return { status: 500, message: "Server error"}
-		}
-		return { status: 201, message: `Diary is created. data ${response.data}`}
+		return response.error ? { status: 500, message: "Server error"} : { status: 201, message: `Diary is created. data ${response.data}`}
 	}
 
 	async getAll(): Promise<DiariesResponse> {
 		const response = await this.supabase.from("diary").select("*");
+		return response.error ? { status: 500, data: [] } : { status: response.status, data: response.data };
+	}
 
-		if (response.error) {
-			return { status:500, data: []};
-		}
-		return {status: response.status, data: response.data};
+	async get(diaryId: number) {
+		const response = await this.supabase.from("diary").select("*").eq("id", diaryId);
+		return response.error ? { status: 500, data: [] } : { status: response.status, data: response.data };
 	}
 }
