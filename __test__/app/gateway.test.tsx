@@ -44,4 +44,36 @@ describe("supabaseにdairyを登録する", () => {
 		const actual = await diaryGateway.getAll();
 		expect(expectedDiariesData).toEqual(actual);
 	})
+
+	test("dairyId=1のdiaryのレコードの取得に成功する", async () => {
+		const expectedDiaryData = {
+			data: [
+				{
+					"id": 1,
+					"title": "test title",
+					"body": "test body",
+					"write_date": "2021-08-01"
+				}
+			],
+			status: 200
+		};
+		const actual = await diaryGateway.get(1);
+		expect(expectedDiaryData).toEqual(actual);
+	})
+	
+	test("dairyId=2のdiaryのレコードを取得すると、存在しないので空配列が返る", async () => {
+		const expectedDiaryData = {
+			data: [
+				{
+					"id": 1,
+					"title": "test title",
+					"body": "test body",
+					"write_date": "2021-08-01"
+				}
+			],
+			status: 200
+		};
+		const actual = await diaryGateway.get(1);
+		expect(expectedDiaryData).toEqual(actual);
+	}) 
 })

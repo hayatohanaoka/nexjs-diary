@@ -24,6 +24,22 @@ export const supabaseDriverMock = jest.fn().mockImplementation(() => {
         ],
         status: 200
       }
+    },
+    get(diaryId: number) {
+      return diaryId === 1 ? {
+        data: [
+          {
+            "id": 1,
+            "title": "test title",
+            "body": "test body",
+            "write_date": "2021-08-01"
+          }
+        ],
+        status: 200
+      } : {
+        data: [],
+        status: 200
+      }
     }
   }
 })
