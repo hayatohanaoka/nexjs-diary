@@ -12,9 +12,20 @@ const diaryMock2 = {
 export const handlers = [
 	http.get(`${process.env.SUPABASE_ENDPOINT}/rest/v1/diary`, ({ request }) => {
 		const url = new URL(request.url)
-		const selectQuery = url.searchParams.get("select")
-		if (selectQuery === "*") {
+		const idQuery = url.searchParams.get("id");
+		console.log(idQuery);
+		
+		if (!idQuery) {
 			return HttpResponse.json([diaryMock1, diaryMock2])
 		}
+
+		if (idQuery.match("eq.1")) {
+			return HttpResponse.json([diaryMock1])
+		} else if (idQuery.match("eq.2")) {
+			return HttpResponse.json([diaryMock2])
+		} else {
+			return HttpResponse.json([])
+		}
+	
 	})
 ]
