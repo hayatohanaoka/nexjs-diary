@@ -1,2 +1,2 @@
 import { test, expect } from "@playwright/test";
-import { assertHeader } from "../../../common/common";
+import { assertHeader } from "../../common/common";

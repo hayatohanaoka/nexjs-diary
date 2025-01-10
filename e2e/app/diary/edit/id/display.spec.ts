@@ -30,6 +30,15 @@ test.describe("日記の編集画面の表示テスト", () => {
       await expect(targetMonthPulldown).toHaveValue(expectedMonth);
       await expect(targetDayPulldown).toHaveValue(expectedDay);
     })
+
+		test("ユーザーは日記の一覧へ戻ることができる", async ({ page }) => {
+			const expectedLinkUrl = "/diary/show";
+			const expectedLinkText = "日記一覧へ戻る";
+
+			const targetLink = await page.locator("a[data-test-id='list-link']")
+			
+			await expect(targetLink).toHaveText(expectedLinkText);
+			await expect(targetLink).toHaveAttribute("href", expectedLinkUrl);
+		})
   })
 })
-

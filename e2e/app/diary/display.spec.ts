@@ -1,6 +1,5 @@
 import { test, expect } from "@playwright/test";
-import assert from "node:assert";
-import { assertHeader } from "../../common/common";
+import { assertHeader } from "../common/common";
 import { describe } from "node:test";
 
 describe("日記アプリのトップページの表示テスト", () => {

@@ -5,8 +5,7 @@ import { DateOption } from "../../../components/formItems/diaryDate";
 import { DiaryTitle } from "../../../components/formItems/diaryTitle";
 import { Header } from "../../../components/header";
 
-
-export default async function topPage(props) {
+export default async function editFormPage(props) {
 	const urlParams = await props.params;
 	const diariesResponse = await diaryUseCase.show(urlParams.id)
 	const diaries = diariesResponse.data;
@@ -35,6 +34,7 @@ export default async function topPage(props) {
 				<DiaryBody displayLabelText="本文" required={true} defaultInput={diary.body}/>
 				<button type="submit">送信</button>
 			</form>
+			<Link href="/diary/show" data-test-id="list-link">日記一覧へ戻る</Link>
 		</div>
 	)
 }

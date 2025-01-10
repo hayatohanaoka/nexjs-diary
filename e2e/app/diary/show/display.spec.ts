@@ -1,5 +1,5 @@
 import { test, expect } from "@playwright/test";
-import { assertHeader } from "../../../common/common";
+import { assertHeader } from "../../common/common";
 
 test.describe("日記の閲覧画面の表示テスト", () => {
   test.describe("正常系" , () => {

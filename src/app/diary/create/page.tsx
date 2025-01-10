@@ -9,7 +9,7 @@ import { DiaryBody } from '../../components/formItems/diaryBody';
 import { SubmitButton } from '../../components/formItems/submitButton';
 
 
-export default async function createPage() {
+export default async function createFormPage() {
   return (
     <div>
       <Header />

@@ -1,13 +1,8 @@
 import Link from 'next/link';
 import { Diary } from '../../domain/diary';
-import { server } from '../../../e2e/mocks/show/node';
 
 interface TableProps {
 	diaries: Diary[];
-}
-
-if (process.env.USE_E2E_MOCKS) {
-	server.listen();
 }
 
 export const DiariesTable = (props: TableProps) => {

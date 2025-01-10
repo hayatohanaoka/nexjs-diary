@@ -1,7 +1,7 @@
 // 日記の新規作成を行う画面の表示
 
 import { test, expect } from "@playwright/test";
-import { assertHeader } from "../../../common/common";
+import { assertHeader } from "../../common/common";
 import { after, before, describe } from "node:test";
 
 test.describe("日記の作成画面の表示テスト", () => {
