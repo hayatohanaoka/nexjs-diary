@@ -63,4 +63,20 @@ describe("アプリケーションでdiaryを使用する", () => {
     const actual = await diaryUseCase.showAll();
     expect(expectedDiariesData).toEqual(actual);
   })
+
+  test("diaryId=1のdiaryの閲覧に成功する", async () => {
+    const expectedDiaryData = {
+      data: [
+        {
+          "id": 1,
+          "title": "test title",
+          "body": "test body",
+          "write_date": "2021-08-01"
+        }
+      ],
+      status: 200
+    }
+    const actual = await diaryUseCase.show(1);
+    expect(expectedDiaryData).toEqual(actual);
+  })
 })
