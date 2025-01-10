@@ -10,13 +10,13 @@ test.describe("日記の閲覧画面の表示テスト", () => {
     await assertHeader("/diary/create", "日記帳アプリ", page);
   })
 
-  test("ユーザーは日記の項目ヘッダーが表示されているのを見ることができる", async ({ page }) => {
+  test("ユーザーが作成した日記がある場合、日記の項目ヘッダーが表示されているのを見ることができる", async ({ page }) => {
     const expectedHeaderItems = ["作成順", "日付", "タイトル", "本文"];
     const targetTableHeader = await page.locator("thead tr th").allInnerTexts();
     expect(targetTableHeader).toEqual(expectedHeaderItems);
   })
 
-  test("ユーザーは日記の一覧の1番目が「1, 2020-01-01, 固定タイトル, 固定本文」であるのを見ることができる", async ({ page }) => {
+  test("ユーザーが作成した日記がある場合、一覧の1番目が「1, 2020-01-01, 固定タイトル, 固定本文」であるのを見ることができる", async ({ page }) => {
     const expectedDairyDataList = [
       "1", "2020-01-01", "固定タイトル", "固定本文"
     ];
